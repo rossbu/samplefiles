@@ -1,0 +1,82 @@
+{
+    "Employees": [
+        {
+            "firstName": "Ross",
+            "lastName": "Bu",
+            "gender": "M",
+            "age": 42,
+            "address": {
+                "streetAddress": "678 Udhna",
+                "city": "new york",
+                "state": "NY",
+                "postalCode": "100001"
+            },
+            "phoneNumbers": [
+                {
+                    "type": "home",
+                    "number": "7383627627"
+                },
+                {
+                    "type": "cell",
+                    "number": "1234556780"
+                },
+                {
+                    "type": "work",
+                    "number": "2033627627"
+                }
+            ]
+        },
+        {
+            "firstName": "Cathy",
+            "lastName": "hi",
+            "gender": "F",
+            "age": 42,
+            "address": {
+                "streetAddress": "890 Udhna",
+                "city": "Danbury",
+                "state": "CT",
+                "postalCode": "100001"
+            },
+            "phoneNumbers": [
+                {
+                    "type": "home",
+                    "number": "7383627627"
+                },
+                {
+                    "type": "cell",
+                    "number": "1234556780"
+                },
+                {
+                    "type": "work",
+                    "number": "2033627627"
+                }
+            ]
+        },
+        {
+            "firstName": "Daniel",
+            "lastName": "lo",
+            "gender": "M",
+            "age": 42,
+            "address": {
+                "streetAddress": "678 Udhna",
+                "city": "new york",
+                "state": "NY",
+                "postalCode": "23456"
+            },
+            "phoneNumbers": [
+                {
+                    "type": "home",
+                    "number": "7383627627"
+                },
+                {
+                    "type": "cell",
+                    "number": "1234556780"
+                },
+                {
+                    "type": "work",
+                    "number": "2033627627"
+                }
+            ]
+        }
+    ]
+}
