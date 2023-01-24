@@ -1,0 +1,4 @@
+## tools
+jp  ->  JMESPath
+jq  ->  jq is a command-line utility that can slice, filter, and transform the components of a JSON file
+jid ->  JSON Incremental Digger 
