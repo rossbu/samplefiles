@@ -7,6 +7,8 @@
 ## python venv
 build
 **/venv/*
+.venv/
+.venv/*
 **/__pycache__/*
 .idea/
 
@@ -90,3 +92,4 @@ override.tf.json
 .terraformrc
 terraform.rc
 .terraform/*
+
