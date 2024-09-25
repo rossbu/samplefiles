@@ -1,16 +1,17 @@
 .DS_Store
+build
+*.logs
 
+### sublime ###
 # sublime
 *.sublime-project
 *.sublime-workspace
 
-## python venv
-build
+### python ###
 **/venv/*
 .venv/
 .venv/*
 **/__pycache__/*
-.idea/
 
 ### VisualStudioCode ###
 .vscode/*
@@ -21,41 +22,55 @@ build
 *.code-workspace
 settings.json
 
-# java
-.idea/
-*.iml
-.idea/
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+.nb-gradle-properties
+
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
 .eclipse
 
+### Intellij ###
+.idea/
+*.iml
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+atlassian-ide-plugin.xml
+.jpb
 
-# Maven based Java project
+
+### Maven ###
 target/
 *.class
 *.jar
 *.war
 *.ear
-*.logs
 
-# gradle 
-.vagrant
-atlassian-ide-plugin.xml
-.nb-gradle-properties
-.gradle/
-.jpb
-build
-/.nb-gradle/
+### Gradle ###
 .gradle
+.gradle/
 dist
 out
-*.iml
-*.ipr
-*.iws
-.idea
 bin
-.project
-.classpath
-.settings
-
+.vagrant
 
 ## terroform  Local .terraform directories
 **/.terraform/*
