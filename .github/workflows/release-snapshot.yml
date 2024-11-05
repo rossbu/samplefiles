@@ -5,32 +5,32 @@ on:
       - master
   workflow_dispatch:
 jobs:
-  create-release-candidate:
+  do-release-snapshot:
     timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set Git config
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "Github Actions"
-      - name: Pick branch name
+      - name: select a branch
         id: branch-name
         run: |
           echo "::set-output name=BRANCH_NAME::release-snapshot-$(date '+%Y-%m-%d-%H%M%S')"
-      - name: Merge master to prod-release
+      - name: Merge main to prod-release
         run: |
           git fetch --unshallow
-          git checkout master
+          git checkout main
           git pull --rebase
           git checkout prod-release
           git pull --rebase
-          git merge master -m "Release latest changes"
+          git merge main -m "## Release latest commits from Main to Prod release ##"
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v4
+        uses: peter-evans/create-pull-request@v7
         with:
-          title: '[AUTO] Release Snapshot'
+          title: '[AUTO] Release (main-to-prod-release) Snapshot'
           branch: "${{ steps.branch-name.outputs.BRANCH_NAME }}"
       - name: Check outputs
         if: ${{ steps.cpr.outputs.pull-request-url }}
