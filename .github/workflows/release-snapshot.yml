@@ -1,0 +1,44 @@
+name: Create release snapshot
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+jobs:
+  create-release-candidate:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set Git config
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "Github Actions"
+      - name: Pick branch name
+        id: branch-name
+        run: |
+          echo "::set-output name=BRANCH_NAME::release-snapshot-$(date '+%Y-%m-%d-%H%M%S')"
+      - name: Merge master to prod-release
+        run: |
+          git fetch --unshallow
+          git checkout master
+          git pull --rebase
+          git checkout prod-release
+          git pull --rebase
+          git merge master -m "Release latest changes"
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v4
+        with:
+          title: '[AUTO] Release Snapshot'
+          branch: "${{ steps.branch-name.outputs.BRANCH_NAME }}"
+      - name: Check outputs
+        if: ${{ steps.cpr.outputs.pull-request-url }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+      - name: Approve PR
+        if: ${{ steps.cpr.outputs.pull-request-url }}
+        run: |
+          export GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
+          gh pr review ${{ steps.cpr.outputs.pull-request-url }} --approve
