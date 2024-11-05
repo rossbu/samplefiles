@@ -2,7 +2,7 @@ name: Create release snapshot
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 jobs:
   do-release-snapshot:
